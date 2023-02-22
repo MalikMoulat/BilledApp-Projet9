@@ -25,7 +25,7 @@ export default class NewBill {
     formData.append('file', file)
     formData.append('email', email)
 
-    //*************** [Bug Hunt] - Bills *******************/
+    //***************2 [Bug Hunt] - Bills *******************/
 
     const extensionRegex = new RegExp('^.*\.(jpg|jpeg|png)$', "i")
     if (!extensionRegex.test(file.name)) return false, alert('Mauvais format de fichier'), this.document.querySelector(`input[data-testid="file"]`).value = ""

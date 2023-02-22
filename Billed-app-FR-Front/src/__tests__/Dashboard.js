@@ -141,6 +141,7 @@ describe('Given I am connected as an Admin', () => {
       icon1.addEventListener('click', handleShowTickets1)
       userEvent.click(icon1)
       expect(handleShowTickets1).toHaveBeenCalled()
+      
       expect(screen.getByTestId(`open-bill47qAXb6fIm2zOKkLzMro`)).toBeTruthy()
       const iconEdit = screen.getByTestId('open-bill47qAXb6fIm2zOKkLzMro')
       userEvent.click(iconEdit)
