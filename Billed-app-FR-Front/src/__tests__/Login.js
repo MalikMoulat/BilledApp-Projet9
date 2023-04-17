@@ -7,9 +7,14 @@ import Login from "../containers/Login.js";
 import { ROUTES } from "../constants/routes";
 import { fireEvent, screen } from "@testing-library/dom";
 
+//Étant donné que je suis un utilisateur sur la page de connexion
 describe("Given that I am a user on login page", () => {
-  describe("When I do not fill fields and I click on employee button Login In", () => {
-    test("Then It should renders Login page", () => {
+  //Quand je ne remplis pas les champs et que je clique sur le bouton Employé Se connecter
+  describe("When I leave the fields blank and click the Employee Login button", () => {
+    //Alors je doit rester sur la page Login
+    test("then I have to stay on the Login page", () => {
+
+      //Simulation de la page login
       document.body.innerHTML = LoginUI();
 
       const inputEmailUser = screen.getByTestId("employee-email-input");
@@ -27,17 +32,24 @@ describe("Given that I am a user on login page", () => {
     });
   });
 
-  describe("When I do fill fields in incorrect format and I click on employee button Login In", () => {
+  //Quand je remplis les champs avec un format incorect et que je clique sur le boutton login
+  describe("When I fill in the fields with an incorrect format and click on the login button", () => {
+    //Alors je reste sur la page login
     test("Then It should renders Login page", () => {
+
+      //Simulation de la page Login
       document.body.innerHTML = LoginUI();
 
+      const wrongMailFormat = "zrvzerv.com"
+      const password = "aqwzsx"
+
       const inputEmailUser = screen.getByTestId("employee-email-input");
-      fireEvent.change(inputEmailUser, { target: { value: "pasunemail" } });
-      expect(inputEmailUser.value).toBe("pasunemail");
+      fireEvent.change(inputEmailUser, { target: { value: wrongMailFormat } });
+      expect(inputEmailUser.value).toBe(wrongMailFormat);
 
       const inputPasswordUser = screen.getByTestId("employee-password-input");
-      fireEvent.change(inputPasswordUser, { target: { value: "azerty" } });
-      expect(inputPasswordUser.value).toBe("azerty");
+      fireEvent.change(inputPasswordUser, { target: { value: password } });
+      expect(inputPasswordUser.value).toBe(password);
 
       const form = screen.getByTestId("form-employee");
       const handleSubmit = jest.fn((e) => e.preventDefault());
@@ -48,9 +60,15 @@ describe("Given that I am a user on login page", () => {
     });
   });
 
-  describe("When I do fill fields in correct format and I click on employee button Login In", () => {
+  //Lorsque je remplis les champs dans le bon format et que je clique sur le bouton Employé Connexion
+  describe("When I fill in the fields in the correct format and click on the Employee Login button", () => {
+    //Alors je dois être identifié en tant qu'employer dans l'app
     test("Then I should be identified as an Employee in app", () => {
+
+      //Simulation de la page login
       document.body.innerHTML = LoginUI();
+
+      //User login data
       const inputData = {
         email: "johndoe@email.com",
         password: "azerty",
@@ -62,8 +80,7 @@ describe("Given that I am a user on login page", () => {
 
       const inputPasswordUser = screen.getByTestId("employee-password-input");
       fireEvent.change(inputPasswordUser, {
-        target: { value: inputData.password },
-      });
+        target: { value: inputData.password } });
       expect(inputPasswordUser.value).toBe(inputData.password);
 
       const form = screen.getByTestId("form-employee");
@@ -228,3 +245,5 @@ describe("Given that I am a user on login page", () => {
     });
   });
 });
+
+

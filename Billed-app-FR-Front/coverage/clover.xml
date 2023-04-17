@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678111624484" clover="3.2.0">
-  <project timestamp="1678111624484" name="All files">
-    <metrics statements="223" coveredstatements="175" conditionals="92" coveredconditionals="72" methods="69" coveredmethods="51" elements="384" coveredelements="298" complexity="0" loc="223" ncloc="223" packages="3" files="16" classes="16"/>
+<coverage generated="1681736792430" clover="3.2.0">
+  <project timestamp="1681736792430" name="All files">
+    <metrics statements="223" coveredstatements="205" conditionals="92" coveredconditionals="76" methods="69" coveredmethods="56" elements="384" coveredelements="337" complexity="0" loc="223" ncloc="223" packages="3" files="16" classes="16"/>
     <package name="constants">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="routes.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/constants/routes.js">
         <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="6" count="6" type="stmt"/>
         <line num="13" count="6" type="stmt"/>
-        <line num="14" count="31" type="cond" truecount="5" falsecount="0"/>
+        <line num="14" count="35" type="cond" truecount="5" falsecount="0"/>
         <line num="16" count="7" type="stmt"/>
-        <line num="18" count="7" type="stmt"/>
+        <line num="18" count="11" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
         <line num="22" count="12" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
@@ -20,7 +20,7 @@
       </file>
     </package>
     <package name="containers">
-      <metrics statements="187" coveredstatements="139" conditionals="57" coveredconditionals="37" methods="54" coveredmethods="36"/>
+      <metrics statements="187" coveredstatements="169" conditionals="57" coveredconditionals="41" methods="54" coveredmethods="41"/>
       <file name="Bills.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/containers/Bills.js">
         <metrics statements="25" coveredstatements="23" conditionals="6" coveredconditionals="4" methods="9" coveredmethods="9"/>
         <line num="7" count="5" type="stmt"/>
@@ -128,7 +128,7 @@
       </file>
       <file name="Login.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/containers/Login.js">
         <metrics statements="41" coveredstatements="30" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="5"/>
-        <line num="3" count="3" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
@@ -172,55 +172,55 @@
       </file>
       <file name="Logout.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/containers/Logout.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="20" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
+        <line num="5" count="21" type="stmt"/>
+        <line num="6" count="21" type="stmt"/>
+        <line num="7" count="21" type="stmt"/>
+        <line num="8" count="21" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
       </file>
       <file name="NewBill.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/containers/NewBill.js">
-        <metrics statements="40" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="8" coveredmethods="1"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
+        <metrics statements="40" coveredstatements="38" conditionals="6" coveredconditionals="4" methods="8" coveredmethods="6"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="73" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
       </file>
     </package>
@@ -235,13 +235,13 @@
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="9" type="stmt"/>
         <line num="22" count="6" type="stmt"/>
-        <line num="23" count="9" type="cond" truecount="4" falsecount="0"/>
-        <line num="28" count="10" type="stmt"/>
-        <line num="45" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="28" count="14" type="stmt"/>
+        <line num="45" count="14" type="cond" truecount="2" falsecount="0"/>
         <line num="46" count="2" type="stmt"/>
-        <line num="47" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="12" type="cond" truecount="2" falsecount="0"/>
         <line num="48" count="2" type="stmt"/>
-        <line num="51" count="6" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
       </file>
       <file name="DashboardFormUI.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/views/DashboardFormUI.js">
         <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
@@ -270,16 +270,16 @@
       </file>
       <file name="NewBillUI.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/views/NewBillUI.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="5" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
       </file>
       <file name="VerticalLayout.js" path="/Users/malikmoulat/Desktop/Cours/Cours-OpenClassrooms/Frontend-Javascript-Reac/Projet-9/Billed-main/Billed-app-FR-Front/src/views/VerticalLayout.js">
         <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
-        <line num="7" count="40" type="stmt"/>
-        <line num="8" count="40" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="27" type="stmt"/>
-        <line num="11" count="40" type="cond" truecount="4" falsecount="0"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="29" count="29" type="stmt"/>
+        <line num="7" count="45" type="stmt"/>
+        <line num="8" count="45" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="33" type="stmt"/>
+        <line num="11" count="45" type="cond" truecount="4" falsecount="0"/>
+        <line num="12" count="17" type="stmt"/>
+        <line num="29" count="28" type="stmt"/>
       </file>
     </package>
   </project>
