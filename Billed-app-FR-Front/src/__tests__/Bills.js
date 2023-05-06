@@ -13,15 +13,14 @@ import mockStore from "../__mocks__/store";
 import router from "../app/Router.js";
 jest.mock("../app/Store", () => mockStore)
 
-//test sur la page employée des factures
-
+//Étant donné que je suis connecté en tant qu'employé
 describe("Given I am connected as an employee", () => {
-  //Étant donné que je suis connecté en tant qu'employé
+  //Quand je suis sur la page Bills(factures)
   describe("When I am on Bills Page", () => {
-    //Quand je suis sur la page Bills(factures)
+    //Ensuite, l'icône de la facture dans la disposition verticale doit être mise en surbrillance
     test("Then bill icon in vertical layout should be highlighted", async () => {
-      //Ensuite, l'icône de la facture dans la disposition verticale doit être mise en surbrillance
-
+      
+      // Simulation des donnée dans le locale storage
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
       });
@@ -31,20 +30,26 @@ describe("Given I am connected as an employee", () => {
           type: "Employee",
         })
       );
+
+
       const root = document.createElement("div");
+
       root.setAttribute("id", "root");
+
       document.body.append(root);
+
       router();
+
       window.onNavigate(ROUTES_PATH.Bills);
       await waitFor(() => screen.getByTestId("icon-window"));
       const windowIcon = screen.getByTestId("icon-window");
-      //to-do write expect expression
-      //Ajout de la mention expect
-      expect(windowIcon.classList.contains("active-icon")).toBe(true); // dois etre true et non false
+
+      expect(windowIcon.classList.contains("active-icon")).toBe(true);
     });
 
+    // Ensuite les notes doivent être en ordre croissant
     test("Then bills should be ordered from earliest to latest", () => {
-      //ensuite les notes doivent être en ordre croissant
+      
       document.body.innerHTML = BillsUI({ data: bills });
       const dates = screen
         .getAllByText(
@@ -58,48 +63,70 @@ describe("Given I am connected as an employee", () => {
 
   });
 });
-//test handleClickIconEye ligne 14 containers/Bills.js
 
-describe("When I click on first eye icon", () => {//Lorsque je clique sur l'icône du premier œil
-  test("Then modal should open", () => {//Ensuite, la modale devrait s'ouvrir
-    Object.defineProperty(window, localStorage, { value: localStorageMock });//simule des données dans le localstorage
-    window.localStorage.setItem("user", JSON.stringify({ type: "Employee" }));//on simule en utilisateur connécter de type employé
+//************** */ Test handleClickIconEye containers/Bills.js
+//********************************************************** */
+
+// Lorsque je clique sur la premiere icone Oeil
+describe("When I click on first eye icon", () => {
+  // Alors la modal devrair s'ouvrir
+  test("Then modal should open", () => {
+
+    // Simule des données dans le localstorage
+    Object.defineProperty(window, localStorage, { value: localStorageMock });
+    
+    // Simulation d'un utilisateur de type employé dans le locale storage
+    window.localStorage.setItem("user", JSON.stringify({ type: "Employee" }));
     const html = BillsUI({ data: bills });//création de la constante la modale facture de l'employé
     document.body.innerHTML = html;
 
-    const onNavigate = (pathname) => {//navigation vers la route bills
+
+    const onNavigate = (pathname) => {
       document.body.innerHTML = ROUTES({ pathname });
     };
 
-    const billsContainer = new Bills({//creation d'une facture
+    // Création d'une facture
+    const billsContainer = new Bills({
       document,
       onNavigate,
       localStorage: localStorageMock,
       store: null,
     });
 
-    //MOCK de la modale
-    $.fn.modal = jest.fn();//affichage de la modale
+    // MOCK de la modal
+    $.fn.modal = jest.fn(); // Affichage de la modale
 
-    //MOCK L'ICÔNE DE CLIC
-    const handleClickIconEye = jest.fn(() => {//fonction qui simule un click
+    //MOCK l'icone de click
+    const handleClickIconEye = jest.fn(() => { //fonction qui simule un click
       billsContainer.handleClickIconEye;
     });
+
     const firstEyeIcon = screen.getAllByTestId("icon-eye")[0];
-    firstEyeIcon.addEventListener("click", handleClickIconEye);//surveil un événement au click sur l'oeil
-    fireEvent.click(firstEyeIcon);//click sur l'icone
-    expect(handleClickIconEye).toHaveBeenCalled();//vérifie si l'evenement au click a été appeler
-    expect($.fn.modal).toHaveBeenCalled();// vérifie si la modale est appeler
+
+    // Écoute l'événement click sur icon Oeil
+    firstEyeIcon.addEventListener("click", handleClickIconEye);
+    // Click sur le premier icon Oeil
+    fireEvent.click(firstEyeIcon);
+    // Vérifie si handleClickIconEye a été appeler
+    expect(handleClickIconEye).toHaveBeenCalled();
+    // Vérifie si la modal a été appeler
+    expect($.fn.modal).toHaveBeenCalled();
   });
 });
 
-// test naviagtion ligne 21 containers/Bills.js
-describe("When i click the button 'Nouvelle note de frais'", () => {//je clique sur le bouton nouvelle note de frais
-  test("Then newbill appears", () => { // Vérifie qu'on arrive bien sur la page NewBill
+//***************** */ Test naviagtion containers/Bills.js
+/****************************************************** */
+
+// Lorsque je clique sur le bouton nouvelle note de frais
+describe("When i click the button 'Nouvelle note de frais'", () => {
+  // Alors je rediriger vers NewwBill
+  test("So I redirect to NewwBill", () => {
+
     //J'intègre le chemin d'accès
     const onNavigate = (pathname) => {
       document.body.innerHTML = ROUTES({ pathname })
     }
+
     const billsPage = new Bills({
       document,
       onNavigate,
@@ -107,36 +134,58 @@ describe("When i click the button 'Nouvelle note de frais'", () => {//je clique 
       bills: bills,
       localStorage: window.localStorage
     })
-    //création constante pour la fonction qui appel la fonction a tester
-    const OpenNewBill = jest.fn(billsPage.handleClickNewBill);//l20 bills.js
-    const btnNewBill = screen.getByTestId("btn-new-bill")//cible le btn nouvelle note de frais
+
+    // Création constante pour la fonction qui appel la fonction a tester
+    const OpenNewBill = jest.fn(billsPage.handleClickNewBill);
+    // Boutton "Nouvelle note de frais"
+    const btnNewBill = screen.getByTestId("btn-new-bill")
+
+    // Écoute l'event 
     btnNewBill.addEventListener("click", OpenNewBill)//écoute évènement
-    fireEvent.click(btnNewBill)//simule évènement au click
-    // on vérifie que la fonction est appelée et que la page souhaitée s'affiche
-    expect(OpenNewBill).toHaveBeenCalled()//je m'attends à ce que la page nouvelle note de frais se charge
-    expect(screen.getByText("Envoyer une note de frais")).toBeTruthy()//la nouvelle note de frais apparait avec le titre envoyer une note de frais
+    // Simule un click sur le boutton "Nouvelle note de frais"
+    fireEvent.click(btnNewBill)
+    // Verification que OpenNewBill a bien été appeler
+    expect(OpenNewBill).toHaveBeenCalled()
+    // Vérification que je suis bien sur la page "nouvelle note de frais"
+    expect(screen.getByText("Envoyer une note de frais")).toBeTruthy()
   })
 })
 
-// test d'integration get bill
-describe("When I get bills", () => {//Quand je demande de récupérer des factures
-  test("Then it should render bills", async () => {//Ensuite, il devrait afficher les factures
-    const bills = new Bills({//récupération des factures dans le store
+
+//******************************** */ Test d'integration getBill
+/************************************************************ */
+
+// Quand je demande de récupérer des factures
+describe("When I get bills", () => {
+  // Alors, il devrait afficher les fectures
+  test("Then it should render bills", async () => {
+
+    // Recupération des factures dans le store
+    const bills = new Bills({
       document,
       onNavigate,
       store: mockStore,
       localStorage: window.localStorage,
     });
-    const getBills = jest.fn(() => bills.getBills());//simulation du click       
-    const value = await getBills();//vérification
-    expect(getBills).toHaveBeenCalled();//ON TEST SI LA METHODE EST APPELEE
+
+    
+    const getBills = jest.fn(() => bills.getBills()); 
+
+    const value = await getBills();
+
+    // getBills doit être appeler
+    expect(getBills).toHaveBeenCalled();
+    // Test si la longeur du tableau (le tableau doit contenir les 4 factures du __mocks__ store)
     expect(value.length).toBe(4);//test si la longeur du tableau est a 4 du store.js
   });
 });
 
-//TEST ERREUR 404 ET 500
+//*********************** TEST ERREUR 404 ET 500
+/******************************************** */
 
-describe("When an error occurs on API", () => { //Lorsqu'une erreur se produit sur l'API
+// Quand une erreur se produitsur l'API
+describe("When an error occurs on API", () => {
+
   beforeEach(() => {
     jest.spyOn(mockStore, 'bills')
     Object.defineProperty(window, 'localStorage', {
@@ -155,21 +204,28 @@ describe("When an error occurs on API", () => { //Lorsqu'une erreur se produit s
     router()
   })
 
-  test("Then i fetch the invoices in the api and it fails with a 404 error", async () => {//Ensuite, je récupère les factures dans l'api et cela échoue avec une erreur 404
-    mockStore.bills.mockImplementationOnce(() => {//changement du comportement pour générer une erreur
+  // Ensuite, je récupère les factures dans l'api et cela échoue avec une erreur 404
+  test("Then i fetch the invoices in the api and it fails with a 404 error", async () => {
+
+
+    // Change le comportement pour générer un erreur
+    mockStore.bills.mockImplementationOnce(() => {
       return {
         list: () => {
           return Promise.reject(new Error("Erreur 404"))
         }
       }
     })
+
     window.onNavigate(ROUTES_PATH.Bills)
     await new Promise(process.nextTick)
     const message = screen.getByText(/Erreur 404/)
     expect(message).toBeTruthy()
   })
 
-  test("Then i fetch the invoices in the api and it fails with a 500 error", async () => {//Ensuite, je récupère les factures dans l'api et cela échoue avec une erreur 500
+  // Ensuite, je récupère les factures dans l'api et cela échoue avec une erreur 500
+  test("Then i fetch the invoices in the api and it fails with a 500 error", async () => {
+
     mockStore.bills.mockImplementationOnce(() => {
       return {
         list: () => {
@@ -177,6 +233,7 @@ describe("When an error occurs on API", () => { //Lorsqu'une erreur se produit s
         }
       }
     })
+    
     window.onNavigate(ROUTES_PATH.Bills)
     await new Promise(process.nextTick)
     const message = screen.getByText(/Erreur 500/)
