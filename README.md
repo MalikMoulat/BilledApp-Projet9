@@ -6,26 +6,26 @@ Ce projet, dit frontend, est connecté à un service API backend que vous devez 
 
 Le projet backend se trouve ici: https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-back
 
-## Organiser son espace de travail :
-Pour une bonne organization, vous pouvez créer un dossier bill-app dans lequel vous allez cloner le projet backend et par la suite, le projet frontend:
 
-Clonez le projet backend dans le dossier bill-app :
+Clonez le projet frontend :
+```
+$ git clone https://github.com/MalikMoulat/BilledApp-Projet9
+```
+```
+BilledApp-Projet9/
+   - Billed-app-FR-Front
+```
+
+
+Clonez le projet backend dans le dossier BilledApp-Projet9 :
 ```
 $ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back.git
 ```
 
-```
-bill-app/
-   - Billed-app-FR-Back
-```
 
-Clonez le projet frontend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Front.git
-```
 
 ```
-bill-app/
+BilledApp-Projet9/
    - Billed-app-FR-Back
    - Billed-app-FR-Front
 ```
